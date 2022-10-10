@@ -6,7 +6,7 @@
             "type": "int",
             "defaultValue": 21
         },
-        "buildVersion": {
+        "imageName": {
             "type": "string"
         },
         "azureSubID": {
@@ -67,7 +67,7 @@
                 ]
             },
             "tags": {
-                "Build": "[parameters('buildVersion')]"
+                "ImageName": "[parameters('imageName')]"
             }
         },
         {
@@ -94,7 +94,7 @@
                         }
                     },
                     "imageReference": {
-                        "id": "[concat('/subscriptions/',parameters('azureSubID'),'/resourceGroups/',parameters('virtualMachineRG'),'/providers/Microsoft.Compute/images/',parameters('buildVersion'))]"
+                        "id": "[concat('/subscriptions/',parameters('azureSubID'),'/resourceGroups/',parameters('virtualMachineRG'),'/providers/Microsoft.Compute/images/',parameters('imageName'))]"
                     }
                 },
                 "networkProfile": {
@@ -124,7 +124,7 @@
                 }
             },
             "tags": {
-                "Build": "[parameters('buildVersion')]"
+                "ImageName": "[parameters('imageName')]"
             },
             "zones": [
                 "1"
