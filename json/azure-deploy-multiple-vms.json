@@ -105,7 +105,7 @@
                     ]
                 },
                 "osProfile": {
-                    "computerName": "[concat(parameters('virtualMachineNamePrefix'), copyIndex(1))]",
+                    "computerName": "VM1BOX",
                     "adminUsername": "[parameters('adminUsername')]",
                     "adminPassword": "[parameters('adminPassword')]",
                     "windowsConfiguration": {
