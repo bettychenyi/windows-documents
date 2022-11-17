@@ -129,6 +129,21 @@
             "zones": [
                 "1"
             ]
+        },
+        {
+            "name": "[concat(parameters('virtualMachineName'), '/Microsoft.Azure.Geneva.GenevaMonitoring')]",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "location": "westus2",
+            "apiVersion": "2019-03-01",
+            "properties": {
+                "publisher": "Microsoft.Azure.Geneva",
+                "type": "GenevaMonitoring",
+                "typeHandlerVersion": "2.0",
+                "enableAutomaticUpgrade": true,
+                "autoUpgradeMinorVersion": true,
+                "settings": {},
+                "protectedSettings": {}
+            }
         }
     ],
     "outputs": {
