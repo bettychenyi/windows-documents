@@ -12,6 +12,9 @@
         "azureSubID": {
             "type": "string"
         },
+        "region": {
+            "type": "string"
+        },
         "virtualMachineRG": {
             "type": "string"
         },
@@ -51,7 +54,7 @@
             "name": "[concat(parameters('networkInterfaceNamePrefix'), copyIndex(1))]",
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2021-03-01",
-            "location": "westus2",
+            "location": "[parameters('region')]",
             "dependsOn": [],
             "properties": {
                 "ipConfigurations": [
@@ -78,7 +81,7 @@
             "name": "[concat(parameters('virtualMachineNamePrefix'), copyIndex(1))]",
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2021-07-01",
-            "location": "westus2",
+            "location": "[parameters('region')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceNamePrefix'), copyIndex(1))]"
             ],
@@ -133,7 +136,7 @@
         {
             "name": "[concat(parameters('virtualMachineName'), '/Microsoft.Azure.Geneva.GenevaMonitoring')]",
             "type": "Microsoft.Compute/virtualMachines/extensions",
-            "location": "westus2",
+            "location": "[parameters('region')]",
             "apiVersion": "2019-03-01",
             "properties": {
                 "publisher": "Microsoft.Azure.Geneva",
